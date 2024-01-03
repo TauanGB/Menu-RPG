@@ -1,0 +1,673 @@
+#: kivy 2.2
+
+<Tela_inicial>
+	md_bg_color:[0,0,0,1]
+	MDScreenManager:##Tela
+		id:Scree_Manager_Configs
+		MDScreen:
+			name: 'Tela_ini'
+			padding:10
+			MDBoxLayout:
+				MDBoxLayout:##Caixa maior a ESQUERDA
+					md_bg_color:[0.2,0.2,0.2,1]
+					id: Box_Menu_geral
+					orientation:'vertical'
+					padding:[10,0,10,0]
+					MDBoxLayout:
+						size_hint_y:None
+						height: Box_Menu_geral.height * 0.10
+						padding:5
+						MDBoxLayout:
+							size_hint:None,None
+							size:self.parent.width *0.07,self.parent.height * 0.7
+							md_bg_color:[0.5,0.5,0.5,1]
+							radius:10
+							pos_hint: {'center_x': 0.5,'center_y': 0.5}
+							MDIconButton:
+								size_hint:1,1
+								pos_hint: {'center_x': 0.5,'center_y': 0.5}
+								icon:'Icons\\volume-source.png'
+								icon_size:self.height*0.8
+								on_release: root.Trocar_tela()
+							
+						ScrollView:
+							id: Tela_rolavel
+							do_scroll_y: False
+							do_scroll_x: True
+							MDBoxLayout:###LISTA DE SELEÇÃO DE MONSTROS
+								size_hint_x: None
+								width: self.minimum_width
+								id: Box_List_monstros
+								padding:5
+								MDBoxLayout:
+									size_hint:None,None
+									size:self.parent.parent.width*0.08,self.parent.parent.height*0.8
+									md_bg_color:[0,0.8,0,1]
+									radius:10
+									pos_hint: {'center_x': 0.5,'center_y': 0.5}
+									MDIconButton:
+										size_hint:1,1
+										pos_hint: {'center_x': 0.5,'center_y': 0.5}
+										icon:'Icons\\plus.png'
+										icon_size:self.height*0.8
+										on_release: root.Adicionar_monstros()
+					MDBoxLayout:## MONSTROS EM CENA
+						id: Box_pai_monst_histo_cenario
+						spacing:10
+						MDBoxLayout:
+							size_hint:None,None
+							size:self.parent.width*0.80,self.parent.height
+							padding:5
+							md_bg_color:[0,0,0,1]
+							radius:5
+							Image:
+								id:img_cenario
+								fit_mode:'cover'
+								MDBoxLayout:
+									size_hint:None,None
+									pos:self.parent.pos
+									size:self.parent.size
+									ScrollView:
+										id:Tela_Box_monstros_hp
+										do_scroll_y: False
+										do_scroll_x: True
+										MDBoxLayout:##Box maior que armazena monstro 
+											size_hint: None,None
+											height:self.parent.parent.height
+											width:self.minimum_width
+											minimum_width:self.parent.width
+											cols:None
+											rows:2
+											id: Box_monstros_hp
+						MDBoxLayout:
+							orientation:'vertical'
+							MDBoxLayout:
+								size_hint_y:0.1
+								radius:[15,15,0,0]
+								md_bg_color:[1,1,1,1]
+								MDLabel:
+									text:'Historico'
+									text_size:self.width,None
+									halign:'center'
+
+							MDBoxLayout:
+								md_bg_color:[0,0,0,1]
+								radius:[0,0,15,15]
+								orientation:'vertical'
+								line_width:1
+								MDBoxLayout:## HISTORICO DE BATALHA
+									id: Historico_batalha
+									ScrollView:
+										id: Tela_rolavel_Historico
+										size_hint_y: None
+										height: Historico_batalha.height
+										MDBoxLayout:
+											orientation:'vertical'
+											id: Historico_batalha_box
+											size_hint_y: None
+											height: self.minimum_height
+											padding:[10,5,10,0]
+								
+					MDBoxLayout:## BARRA DE SELEÇÃO DE JOGADOR ATUAL
+						md_bg_color:[0.2,0.2,0.2,1]
+						id: Box_Menu_Jgr_atual
+						size_hint_y: None
+						height: Box_Menu_geral.height * 0.10
+						padding:5
+						MDBoxLayout:
+							md_bg_color:[0.5,0.5,0.5,1]
+							radius:15
+							MDBoxLayout:
+								orientation:'vertical'
+								spacing:2
+								size_hint_x:0.25
+								MDBoxLayout:
+									md_bg_color:[0.4,0.4,0.4,1]
+									radius:10
+									MDLabel:
+										text: 'Rodadas :'
+										halign:'center'
+										color:1,1,1,1
+								MDLabel:
+									id:Rodada_label
+									halign:'center'
+									color:1,1,1,1
+							MDBoxLayout:
+								size_hint_x:0.2
+							MDBoxLayout:
+								size_hint_x:0.65
+								MDBoxLayout:
+									orientation:'vertical'
+									spacing:2
+									MDBoxLayout:
+										md_bg_color:[0.4,0.4,0.4,1]
+										radius:10
+										MDLabel:
+											text: "Turno"
+											halign:'center'
+											color:1,1,1,1
+									MDBoxLayout:
+										padding:[10,2,10,2]
+										spacing:5
+										MDBoxLayout:
+											md_bg_color:[0.7,0.7,0.7,1]
+											radius:7
+											MDIconButton:
+												size_hint:1,1
+												icon: "Icons\\arrow-left-circle.png"
+												on_release:root.Turno_Anter()
+												pos_hint: {'center_x': 0.5,'center_y': 0.5}
+										MDBoxLayout:
+											md_bg_color:[0.7,0.7,0.7,1]
+											radius:7
+											MDIconButton:
+												size_hint:1,1
+												icon: "Icons\\arrow-right-circle.png"
+												on_release:root.Turno_Prox()
+												pos_hint: {'center_x': 0.5,'center_y': 0.5}
+												
+								MDBoxLayout:
+									padding:5
+									MDBoxLayout:
+										md_bg_color:[1,0,0,1]
+										radius:7
+										MDIconButton:
+											id:Bt_Comandar_batalha
+											text:'Iniciar Batalha'
+											size_hint:1,1
+											icon: "Icons\\sword-cross.png"
+											pos_hint: {'center_x': 0.5,'center_y': 0.5}
+											on_release: root.Iniciar_batalha()
+					MDBoxLayout:## BOX DE ORDENAÇÃO DE PLAYER
+						id: Box_Ordem_player
+						size_hint_y: None
+						height: Box_Menu_geral.height * 0.2
+
+				MDBoxLayout:
+					size_hint_x:None
+					width:self.parent.width*0.25
+					MDBoxLayout:##CAIXA A DIREITA, CONFIGURAÇÃO DE AUDIO E DE DANO DE PLAYER
+						id: Box_ply_audio	
+						orientation:'vertical'
+						name: "Tela_Config"
+						MDBoxLayout:##BOX DE PLAYERS
+							orientation:'vertical'
+							MDBoxLayout:
+								md_bg_color:[0.2,0.2,0.2,1]
+								padding:[5,2,5,2]
+								spacing:5
+								radius:[0,15,15,0]
+								size_hint_y:None
+								height:self.parent.height*0.10
+								MDTextField:
+									id:Input_nome_perso
+									pos_hint: {'center_y': 0.4}
+									hint_text:'Personagem'
+									hint_text_color_normal:[1,1,1,1]
+									multiline:False
+								MDIconButton:
+									icon:'Icons\\plus.png'
+									pos_hint: {'center_x': 0.5,'center_y': 0.5}
+									icon_size:self.height*0.8
+									on_release: root.Adicionar_personagem(Input_nome_perso.text)
+							ScrollView:
+								id: Tela_rolavel_dano
+								MDBoxLayout:
+									orientation:'vertical'
+									id: Box_Players_dano
+									padding:[5,5,5,5]
+									spacing:5
+									size_hint_y:None
+									height: self.minimum_height
+						MDLabel:
+							md_bg_color:[0.15,0.15,0.15,1]
+							text:"Paisagem"
+							font_size:12
+							halign:'center'
+							text_size:self.width,None
+							size_hint_y:None
+							height:16
+							color:1,1,1,1
+						MDBoxLayout:#####seleção de cenrario !!!!!!!!!!!!!
+							md_bg_color:[0.4,0.4,0.4,1]
+							size_hint_y:None
+							height: self.parent.height*0.15
+							ScrollView:
+								id: Tela_rolavel_Cenario
+								MDBoxLayout:
+									id: Box_cenarios
+									padding:[5,5,5,5]
+									spacing:5
+									size_hint_x:None
+									width: self.minimum_width
+									MDBoxLayout:
+										size_hint:None,None
+										size:self.parent.parent.width*0.2,self.parent.parent.height*0.45
+										md_bg_color:[0,0.8,0,1]
+										radius:10
+										pos_hint: {'center_x': 0.5,'center_y': 0.5}
+										MDIconButton:
+											size_hint:1,1
+											pos_hint: {'center_x': 0.5,'center_y': 0.5}
+											icon:'Icons\\plus.png'
+											icon_size:self.height*0.8
+											on_release:root.Adicionar_Cenarios()
+						
+						MDLabel:
+							md_bg_color:[0.15,0.15,0.15,1]
+							text:"Grid"
+							font_size:12
+							halign:'center'
+							text_size:self.width,None
+							size_hint_y:None
+							height:16
+							color:1,1,1,1
+						MDBoxLayout:#####seleção de cenrario 2 !!!!!!!!!!!!!
+							md_bg_color:[0.4,0.4,0.4,1]
+							size_hint_y:None
+							height: self.parent.height*0.15
+							ScrollView:
+								id: Tela_rolavel_Cenario_2
+								MDBoxLayout:
+									id: Box_cenarios_2
+									padding:[5,5,5,5]
+									spacing:5
+									size_hint_x:None
+									width: self.minimum_width
+									MDBoxLayout:
+										size_hint:None,None
+										size:self.parent.parent.width*0.2,self.parent.parent.height*0.45
+										md_bg_color:[0,0.8,0,1]
+										radius:10
+										pos_hint: {'center_x': 0.5,'center_y': 0.5}
+										MDIconButton:
+											size_hint:1,1
+											pos_hint: {'center_x': 0.5,'center_y': 0.5}
+											icon:'Icons\\plus.png'
+											icon_size:self.height*0.8
+											on_release:root.Adicionar_Cenarios_2()
+		MDScreen:
+			name:"Tela_Audio"
+			MDBoxLayout:## CONFIGURAÇÃO DE AUDIO
+				orientation:'vertical'
+				id:Box_Audio
+				MDBoxLayout:#Barra de controle de audio
+					size_hint_y:0.1
+					padding:10
+					spacing:10
+					md_bg_color:[0.4,0.4,0.4,1]
+					MDBoxLayout:
+						size_hint:0.2,1
+						spacing:5
+						MDBoxLayout:
+							md_bg_color:[0.5,0.5,0.5,1]
+							radius:10
+							pos_hint: {'center_x': 0.5,'center_y': 0.5}
+							MDIconButton:
+								id: Bt_adc_mosntros
+								size_hint:1,1
+								pos_hint: {'center_x': 0.5,'center_y': 0.5}
+								icon: "Icons\\home-circle-outline.png"
+								icon_size:self.height*0.8
+								on_release: root.Trocar_tela()
+						MDBoxLayout:
+							md_bg_color:[0.5,0.5,0.5,1]
+							radius:10
+							pos_hint: {'center_x': 0.5,'center_y': 0.5}
+							MDIconButton:
+								id: Bt_adc_mosntros
+								size_hint:1,1
+								pos_hint: {'center_x': 0.5,'center_y': 0.5}
+								icon: "Icons\\music-note-plus.png"
+								icon_size:self.height*0.8
+								on_release: root.Adicionar_musica()
+					MDGridLayout:
+				MDGridLayout:
+					md_bg_color:[0,0,0,1]
+					padding:10
+					spacing:5
+					id:Abas_audio
+					rows:5
+
+
+<Box_cenario>
+	size_hint_x:None
+	width:app.root.ids.Tela_rolavel_Cenario.width*0.3
+	orientation:'vertical'
+	MDBoxLayout:
+		FitImage:
+			id:img 
+			source:root.source
+			size_hint:None,None
+			size:self.parent.size
+			pos_hint: {'center_x': 0.5,'center_y': 0.5}
+			pos:self.parent.pos
+	Button:
+		size_hint_y:None
+		height:self.parent.height*0.2
+		fit_mode:'fill'
+		on_release:app.root.select_cenario(root.source)
+		text:'Selecionar'
+
+<Box_cenario_2>
+	size_hint_x:None
+	width:app.root.ids.Tela_rolavel_Cenario_2.width*0.3
+	orientation:'vertical'
+	MDBoxLayout:
+		FitImage:
+			id:img 
+			source:root.source
+			size_hint:None,None
+			size:self.parent.size
+			pos_hint: {'center_x': 0.5,'center_y': 0.5}
+			pos:self.parent.pos
+	Button:
+		size_hint_y:None
+		height:self.parent.height*0.2
+		fit_mode:'fill'
+		on_release:app.root.select_cenario_2(root.source)
+		text:'Selecionar'
+		
+
+<Box_monstros>
+	size_hint_x: None
+	width: 200
+	MDBoxLayout:
+		Image:
+			id: img
+		MDLabel:
+			id: Nome
+			font_size:12
+			halign:'center'
+			text_size:self.width,None
+			color:1,1,1,1
+	MDIconButton:
+		pos_hint: {'center_x': 0.5,'center_y': 0.5}
+		icon:'Icons\\arrow-down-drop-circle-outline.png'
+		color:1,1,1,1
+		on_release: app.root.Ativar_monstro(img.source,Nome.text)
+
+
+<Monstro_Ativo>
+	size_hint_x:None
+	width:app.root.ids.Tela_Box_monstros_hp.width*0.4
+	orientation:'vertical'
+	padding:[10,5,10,5]
+	MDBoxLayout:
+		size_hint_y:None
+		height:root.height* 0.10
+		md_bg_color:[0.2,0.2,0.2,1] 
+		padding:[10,0,10,0]
+		spacing:5
+		MDLabel:
+			text_size:self.width,None
+			halign:'left'
+			id: Nome
+			color:1,1,1,1
+		MDRaisedButton:
+			disabled:False if app.root.ids.Bt_Comandar_batalha.text == 'Iniciar Batalha' else True
+			size:root.width* 0.20,self.parent.height*0.7
+			pos_hint: {'center_x': 0.5,'center_y': 0.5}
+			text: "X"
+			on_release:root.Excluir_monstro(app.root)
+	MDBoxLayout:
+		orientation:'vertical'
+		MDBoxLayout:
+			Image:
+				id: img
+		MDBoxLayout:
+			size_hint_y:None
+			height:self.parent.height * 0.15
+			md_bg_color:[0.5,0.5,0.5,1]
+			radius:[15,15,0,0]
+			padding:[2,0,2,0]
+			MDBoxLayout:
+				padding:5
+				spacing:5
+				MDTextField:
+					id:Hit_setado
+					multiline:False
+					pos_hint: {'center_y': 0.5}
+				MDBoxLayout:
+					adaptive_width:True
+					MDIconButton:
+						icon_size:self.height*0.5
+						icon:'Icons\\sword.png'
+						on_release:root.Dano_levado(Hit_setado.text,app.root)
+					MDIconButton:
+						icon_size:self.height*0.5
+						icon:'Icons\\heart-plus.png'
+						on_release:root.Add_vida(Hit_setado.text)
+					MDIconButton:
+						icon_size:self.height*0.5
+						icon:'Icons\\tag-heart-outline.png'
+						on_release:root.Definir_vida(Hit_setado.text)
+	MDBoxLayout:
+		size_hint_y:0.1
+		padding:[5,5,5,5]
+		spacing:5
+		md_bg_color:[0.5,0.5,0.5,1]
+		MDBoxLayout:
+			md_bg_color:[0.2,0.2,0.2,1]
+			size_hint_x: 0.25
+			radius: [10,]
+			MDLabel:		
+				font_size:self.height*0.7
+				text_size:self.size
+				multiline:False
+				halign:'center'
+				id: life_label
+				color:1,1,1,1
+
+		MDProgressBar:
+			size_hint_y:None
+			height:self.parent.height* 0.1
+			pos_hint: {"center_y": .5}
+			color:0,1,0,1
+			id: life
+	MDBoxLayout:
+		size_hint_y:0.1
+		md_bg_color:[0.5,0.5,0.5,1]
+		radius:[0,0,15,15]
+		padding:2
+		MDBoxLayout:
+			size_hint_x:0.5
+			padding:2
+			Button:
+				size_hint:1,1
+				id:Buton_ad_iniciativa
+				text: "Adicionar a Iniciativa"
+				halign:'center'
+				on_release: app.root.Adicionar_a_iniciativa(root)
+		MDBoxLayout:
+			size_hint_x:0.5
+			padding:2
+			Button:
+				size_hint:1,1
+				id:Buton_ad_cenario
+				text: "Adicionar Ao Cenario"
+				halign:'center'
+				on_release: app.root.Adicionar_ao_cenario(root)
+
+
+
+
+
+<No_dano>
+	md_bg_color:[0.25,0.25,0.25,1]
+	size_hint_y:None
+	radius:10
+	height:app.root.ids.Tela_rolavel_dano.height *0.15
+	MDLabel:
+		id:Nome
+		halign: "center"
+		text_size:self.width,15
+		pos_hint: {'center_y': 0.5}
+		text: ''
+		color:1,1,1,1
+
+	MDIconButton:
+		icon:'Icons\\trash-can.png'
+		disabled:False if app.root.ids.Bt_Comandar_batalha.text == 'Iniciar Batalha' else True
+		size_hint_x: None
+		width: root.width * 0.15
+		on_release:root.excluir_person(app.root)
+
+<Na_fila>
+	orientation:'vertical'
+	padding:5
+	spacing:5
+
+	MDBoxLayout:
+		MDBoxLayout:
+			id:BcgNome
+			md_bg_color:[0.5,0.5,0.5,1]
+			MDLabel:
+				id:Nome
+				color:1,1,1,1
+				text_size:self.width,None
+				halign:'center'
+		MDIconButton:
+			icon_size:'24sp'
+			icon:'Icons\\clock-alert-outline.png'
+			on_release:root.Setar_coldown(app.root)
+			disabled:True if app.root.ids.Bt_Comandar_batalha.text == 'Iniciar Batalha' else False
+	
+	MDBoxLayout:
+		size_hint_y: None
+		height: root.height * 0.3
+		MDBoxLayout:
+			Button:
+				text:"<"
+				on_release: app.root.Pos_Antecedente(root)
+				disabled: False if app.root.ids.Bt_Comandar_batalha.text == 'Iniciar Batalha' else True
+		MDBoxLayout:
+			Button:
+				text:">"
+				on_release: app.root.Pos_decendente(root)
+				disabled: False if app.root.ids.Bt_Comandar_batalha.text == 'Iniciar Batalha' else True
+
+<Monstro_historico>
+	orientation:'vertical'
+	size_hint_y:None
+	height:app.root.ids.Tela_rolavel_Historico.height * 0.35
+	MDBoxLayout:
+		size_hint_y:None
+		height:root.height * 0.20
+		MDLabel:
+			text_size:self.size
+			font_size:self.height*0.6
+			id:nome
+			color:1,1,1,1
+	MDBoxLayout:
+		id:His_hit_levado
+		orientation:'vertical'
+
+
+<Box_label_contagem>
+	MDLabel:
+		size_hint_x: None
+		width: root.width *0.8
+		id:nome
+		text_size:self.width,15
+		text:''
+		color:1,1,1,1
+	MDLabel:
+		id:Dano
+		color:1,1,1,1
+
+<Pop_alerta>
+	title:'Alerta !'
+	size_hint:None,None
+	size:app.root.width*0.3,app.root.height*0.3
+	MDBoxLayout:
+		orientation:'vertical'
+		MDLabel:
+			id: Alerta
+			text:'Pop PUp'
+		MDRaisedButton:
+			size_hint:None,None	
+			width:root.width *0.4
+			height:root.height *0.15
+			pos_hint: {'center_x': 0.5,'center_y': 0.0}
+			text: "OK !"
+			on_release:root.dismiss()
+
+<Audio_box>	
+	MDBoxLayout:
+		id:Box_geral
+		orientation:'vertical'
+		padding:2
+		radius:15
+		md_bg_color:[0.3,0.3,0.3,1]
+		MDBoxLayout:
+			size_hint_y:0.45
+			padding:5
+			MDLabel:
+				halign:'center'
+				text_size:self.size
+				font_size:self.height*0.3
+				text: root.name
+				color:1,1,1,1
+			
+		MDBoxLayout:
+			md_bg_color:[0.2,0.2,0.2,1]
+			radius:15
+			padding:5
+			MDBoxLayout:
+				size_hint:None,None
+				size:self.parent.width*0.1,self.parent.height*0.8
+				md_bg_color:[0.4,0.4,0.4,1]
+				radius:10
+				MDIconButton:
+					id:Buton_play
+					size_hint:1,1
+					icon:'Icons\\play-outline.png'
+					pos_hint: {'center_x': 0.5,'center_y': 0.5}
+					on_release: root.Play_Pause()
+			MDBoxLayout:
+				orientation: 'vertical'
+				MDLabel:
+					size_hint:1,1
+					halign:'center'
+					text_size:self.width,None
+					text: "Replay"
+					color:1,1,1,1
+				Switch:
+					size_hint_x:0.3
+					id:Switch_mute
+					active:True
+					pos_hint: {'center_x': 0.5,'center_y': 0.5}
+			MDBoxLayout:
+				orientation: 'vertical'
+				md_bg_color:[0.4,0.4,0.4,1]
+				radius:10
+				MDBoxLayout:
+					MDIconButton:
+						size_hint:0.2,1
+						orientation:'vertical'
+						id:Bt_Mute
+						icon:"Icons\\volume-high.png"
+						on_release:root.Mutar()
+					MDLabel:
+						size_hint:1,1
+						halign:'center'
+						text_size:self.width,None
+						text: "%i"%Volume_progess.value
+				MDSlider:
+					size_hint_y:0.4
+					id:Volume_progess
+					max: 100
+					value: 100
+					min:0
+					on_value:root.Volume_Slider(self.value)
+			
+<BT_Aba>
+	size_hint_y:None
+	height:root.Box_Audio.height * 0.12
+	halign:'center'
+
+
+	MDRaisedButton:
+		text:root.text
+		on_release:app.root.ids.Sren_manager_audio.current = root.text

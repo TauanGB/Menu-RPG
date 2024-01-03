@@ -1,0 +1,32 @@
+Spawnow Monstro: Aligator Padrom N  0
+gfasdfgdsa atacou mosntro Aligator Padrom N  0 com 12.0 de dano
+Spawnow Monstro: Aligator Padrom
+asdfasd atacou mosntro Aligator Padrom com 23.0 de dano
+Spawnow Monstro: Aligator Padrom N  1
+Spawnow Monstro: Aligator N  0
+Aligator N  0 atacou mosntro Aligator N  0 com 12.0 de dano 
+Aligator N  0 atacou mosntro Aligator Padrom N  1 com 123.0 de dano 
+Spawnow Monstro: Aligator Padrom N  0
+Spawnow Monstro: Bardo N  0
+Bardo N  0 atacou mosntro Bardo N  0 com 14.0 de dano
+Tauan atacou mosntro Bardo N  0 com 1213.0 de dano 
+Spawnow Monstro: Aligator Padrom
+Spawnow Monstro: Aligator Padrom
+Spawnow Monstro: Boss o raro matador de bundas mamador profissional N  0
+fdasd atacou mosntro Boss o raro matador de bundas mamador profissional N  0 com 12.0 de dano
+fdasd atacou mosntro Boss o raro matador de bundas mamador profissional N  0 com 5.0 de dano
+fdasd atacou mosntro Boss o raro matador de bundas mamador profissional N  0 com 15.0 de dano
+dasf atacou mosntro Boss o raro matador de bundas mamador profissional N  0 com 12.0 de dano 
+fdasd atacou mosntro Boss o raro matador de bundas mamador profissional N  0 com 1.0 de dano
+Spawnow Monstro: Boss o raro matador de bundas mamador profissional N  0
+Boss o raro matador de bundas mamador profissional N  0 atacou mosntro Boss o raro matador de bundas mamador profissional N  0 com 124.0 de dano 
+Spawnow Monstro: Boss o raro matador de bundas mamador profissional
+dsaf atacou mosntro Boss o raro matador de bundas mamador profissional com 154.0 de dano
+Boss o raro matador de bundas mamador profissional atacou mosntro Boss o raro matador de bundas mamador profissional com 12344.0 de dano 
+Spawnow Monstro: Boss o raro matador de bundas mamador profissional
+Boss o raro matador de bundas mamador profissional atacou mosntro Boss o raro matador de bundas mamador profissional com 14.0 de dano 
+Spawnow Monstro: Lionpia
+sdfhsdf atacou mosntro Lionpia com 12.0 de dano
+sdfhsdf atacou mosntro Lionpia com 2.0 de dano
+Lionpia atacou mosntro Lionpia com 2.0 de dano 
+Lionpia atacou mosntro Lionpia com 12.0 de dano

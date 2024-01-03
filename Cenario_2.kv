@@ -1,0 +1,16 @@
+#: kivy 2.2
+
+<Cenario_box>
+	md_bg_color:[0.2,0.2,0.2,1]
+	Image:
+		id:Img_cenario
+		size_hint:None,None
+		size:self.parent.size
+		fit_mode:"fill"
+		MDBoxLayout:
+			md_bg_color:[1,1,1,0.25]
+			adaptive_size:True
+			radius:[0,15,0,0]
+			MDIconButton:
+				icon:'fullscreen'
+				on_release:app.Full_Screen()

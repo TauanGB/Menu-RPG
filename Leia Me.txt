@@ -1,0 +1,4 @@
+Ao testar o aplicativo, execute aos seguintes scripts separadamente:
+main.py
+Cenario.py
+Cenario_2.py

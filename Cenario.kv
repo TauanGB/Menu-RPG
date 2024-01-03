@@ -1,0 +1,31 @@
+#: kivy 2.2
+
+<Cenario_box>
+	md_bg_color:[0.2,0.2,0.2,1]
+	Image:
+		id:Img_cenario
+		size_hint:None,None
+		allow_stretch: True
+		size:self.parent.size
+		fit_mode:"cover"
+		MDBoxLayout:
+			md_bg_color:[1,1,1,0.25]
+			adaptive_size:True
+			radius:[0,15,0,0]
+			MDIconButton:
+				icon:'fullscreen'
+				on_release:app.Full_Screen()
+		MDGridLayout:
+			id:Grade_monstros
+			size_hint:None,None
+			pos:self.parent.pos
+			size:self.parent.size
+			padding:45
+			spacing:45
+			cols:5
+<Mosntro>
+	size_hint_max_y: app.root.height*0.5
+	orientation:'vertical'
+	spacing:5
+	Image:
+		source:root.Destino
